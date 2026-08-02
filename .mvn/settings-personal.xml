@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+	xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<!--
+		Isolated settings for this personal project.
+
+		The global ~/.m2/settings.xml (corporate) defines a <mirror mirrorOf="*">
+		pointing at a private Artifactory, which shadows every repository declared
+		in pom.xml (including the Spring Snapshots repo needed to resolve
+		spring-boot-starter-parent:4.0.8-SNAPSHOT). This file has no mirrors,
+		so Maven Central and repo.spring.io/snapshot (declared in pom.xml) are
+		reached directly.
+
+		Usage: ./mvnw <goal> -s .mvn/settings-personal.xml
+	-->
+</settings>
