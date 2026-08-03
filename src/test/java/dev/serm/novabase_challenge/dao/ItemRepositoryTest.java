@@ -81,7 +81,7 @@ class ItemRepositoryTest {
 	}
 
 	private User persistUser(String username) {
-		User user = new User(username, username + "@example.com");
+		User user = new User(username, username + "@example.com", "hashed-password");
 		return entityManager.persist(user);
 	}
 
