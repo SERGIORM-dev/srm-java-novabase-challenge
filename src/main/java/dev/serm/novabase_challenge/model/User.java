@@ -1,5 +1,7 @@
 package dev.serm.novabase_challenge.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,9 +31,15 @@ public class User {
 	@Column
 	private String email;
 
-	public User(String username, String email) {
+	@JsonIgnore
+	@Setter
+	@Column(nullable = false)
+	private String password;
+
+	public User(String username, String email, String password) {
 		this.username = username;
 		this.email = email;
+		this.password = password;
 	}
 
 }
