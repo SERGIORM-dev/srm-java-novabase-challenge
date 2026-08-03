@@ -4,6 +4,8 @@ import java.time.Instant;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -54,6 +56,16 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler({ NoResourceFoundException.class, NoHandlerFoundException.class })
 	public ProblemDetail handleNotFound(Exception ex) {
 		return problemDetail(HttpStatus.NOT_FOUND, "Not found", "The requested route does not exist");
+	}
+
+	@ExceptionHandler(AuthenticationException.class)
+	public ProblemDetail handleAuthenticationException(AuthenticationException ex) {
+		return problemDetail(HttpStatus.UNAUTHORIZED, "Authentication failed", "Invalid username or password");
+	}
+
+	@ExceptionHandler(AccessDeniedException.class)
+	public ProblemDetail handleAccessDenied(AccessDeniedException ex) {
+		return problemDetail(HttpStatus.FORBIDDEN, "Access denied", "You do not have permission to access this resource");
 	}
 
 	private ProblemDetail problemDetail(HttpStatus status, String title, String detail) {
