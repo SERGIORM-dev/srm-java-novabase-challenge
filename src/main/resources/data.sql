@@ -2,11 +2,14 @@
 -- Items represent financial products (credit cards).
 -- Covers: multiple reviews per item, a single review, and an item with NO reviews
 -- (must resolve to average rating = 0).
-
-INSERT INTO users (id, username, email) VALUES
-	(1, 'alice', 'alice@example.com'),
-	(2, 'bob', 'bob@example.com'),
-	(3, 'carol', 'carol@example.com');
+--
+-- All 3 seeded users share the same test password: "password123"
+-- (BCrypt-hashed below). This is only acceptable for local/dev seed data;
+-- a real production data.sql would never contain a shared, known password.
+INSERT INTO users (id, username, email, password) VALUES
+	(1, 'alice', 'alice@example.com', '$2a$10$hp0cCjdePZGxQiIX6cvKnO39RNcMb311R5HtMs5vD3aAC079k9cNm'),
+	(2, 'bob', 'bob@example.com', '$2a$10$hp0cCjdePZGxQiIX6cvKnO39RNcMb311R5HtMs5vD3aAC079k9cNm'),
+	(3, 'carol', 'carol@example.com', '$2a$10$hp0cCjdePZGxQiIX6cvKnO39RNcMb311R5HtMs5vD3aAC079k9cNm');
 
 INSERT INTO items (id, title, description) VALUES
 	(1, 'Platinum Rewards Card', 'Premium credit card with travel rewards and no foreign transaction fees'),
